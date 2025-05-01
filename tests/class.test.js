@@ -1,18 +1,16 @@
+"use strict";
 describe('Class', () => {
     class Customer {
-        constructor(){
+        constructor() {
             console.info("Create new customer");
         }
     }
-
     class Order {
     }
-
     it('should can create class', () => {
-        const customer: Customer = new Customer();
-        const order: Order = new Order();
+        const customer = new Customer();
+        const order = new Order();
     });
-
     it('should can create constructors', () => {
         new Customer();
         new Customer();
