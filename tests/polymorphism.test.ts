@@ -14,7 +14,29 @@ describe('Polymorphism', () => {
     }
 
     function sayHello(employee: Employee) {
-        console.info(`Helllo ${employee.name}`);
+        // console.info(`Helllo ${employee.name}`);
+        if(employee instanceof VicePresident) {
+            const vp = employee as VicePresident;
+            console.info(`Hello VP ${vp.name}`);
+        } else if (employee instanceof Manager) {
+            const manager = employee as Manager;
+            console.info(`Hello manager ${manager.name}`);
+        } else {
+            console.info(`Hello employee ${employee.name}`);
+        }
+    }
+
+    function sayHelloWrong(employee: Employee) {
+        // console.info(`Helllo ${employee.name}`);
+        if(employee instanceof Manager) {
+            const manager = employee as Manager;
+            console.info(`Hello manager ${manager.name}`);
+        } else if (employee instanceof VicePresident) {
+            const vp = employee as VicePresident;
+            console.info(`Hello VP ${vp.name}`);
+        } else {
+            console.info(`Hello employee ${employee.name}`);
+        }
     }
 
     it('should support polymorphism', () => {
@@ -32,5 +54,11 @@ describe('Polymorphism', () => {
         sayHello(new Employee("Zanuar"));
         sayHello(new Manager("Aldi"));
         sayHello(new VicePresident("Putra"));
+    });
+
+    it('should support method parameter polymorphism wrong', () => {
+        sayHelloWrong(new Employee("Zanuar"));
+        sayHelloWrong(new Manager("Aldi"));
+        sayHelloWrong(new VicePresident("Putra"));
     });
 });
